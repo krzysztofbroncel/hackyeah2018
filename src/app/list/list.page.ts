@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-list',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPage implements OnInit {
   private selectedItem: any;
+
   private icons = [
     'flask',
     'wifi',
@@ -19,21 +21,34 @@ export class ListPage implements OnInit {
     'bluetooth',
     'build'
   ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
+  
+  public items: Array<{ name: string; username: string; icon: string }> = [];
+  
+  constructor(private usersService: UsersService) {
+  }
+
+  ngOnInit() {
+    this.fetchData();
+  }
+  
+  private fetchData() {
+    this.usersService.getMockUsers().subscribe(data => {
+      if (data != null ) {
+        this.populateList(data);
+      }
+    });
+  }
+
+  private populateList(data) {
+    for (let i in data) {
+      const person = data[i];
+      console.log(person);
+
       this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
+        name: person.name,
+        username: person.username,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
   }
-
-  ngOnInit() {
-  }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
 }
