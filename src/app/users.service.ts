@@ -15,7 +15,7 @@ export class UsersService {
       return this.http.get(this.mockEndpointUrl)
         .pipe(map(res => {
           console.log("Data fetched from the backend: ", res);
-          JSON.parse(res.text())
+          return JSON.parse(res.text());
         }));
   }
 }
