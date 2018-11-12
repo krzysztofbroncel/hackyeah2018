@@ -18,6 +18,10 @@ const routes: Routes = [
   { 
     path: 'form', 
     loadChildren: './form/form.module#FormPageModule' 
+  },
+  { 
+    path: 'slides', 
+    loadChildren: './slides/slides.module#SlidesPageModule' 
   }
 ];
 
