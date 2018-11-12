@@ -32,7 +32,7 @@ export class ListPage implements OnInit {
   }
   
   private fetchData() {
-    this.usersService.getMockUsers().subscribe(data => {
+    this.usersService.getRequest().subscribe(data => {
       if (data != null ) {
         this.populateList(data);
       }
