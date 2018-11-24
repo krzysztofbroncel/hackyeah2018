@@ -7,7 +7,7 @@ import {switchMap, map} from 'rxjs/operators';
 })
 export class UsersService {
 
-  private getUsersUrl: string = 'https://jsonplaceholder.typicode.com/users';
+  private getUsersUrl: string = 'https://ndaf14yjh2.execute-api.eu-central-1.amazonaws.com/dev/event/all';
   private addPostUrl: string = 'https://jsonplaceholder.typicode.com/posts/1'
 
   constructor(private http: Http) { }
