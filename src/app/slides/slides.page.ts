@@ -15,6 +15,9 @@ export class SlidesPage implements OnInit {
     public total: number;
     public numOfPeople: number;
     public currency: string;
+    public startDate: string;
+    public endDate: string;
+    public destination: string;
 
     constructor() {
         this.doughnutChartLabels = ['Food & Restaurants', 'Transport', 'Activities & Misc', 'Fees', 'Souvenirs'];
@@ -22,6 +25,9 @@ export class SlidesPage implements OnInit {
         this.total = this.doughnutChartData.reduce((a, b) => a + b);
         this.numOfPeople = 2;
         this.currency = "EUR";
+        this.startDate = "04.02.2019"
+        this.endDate = "04.02.2019"
+        this.destination = "Italy"
     }
 
     ngOnInit() {

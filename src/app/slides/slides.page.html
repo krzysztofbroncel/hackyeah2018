@@ -1,34 +1,39 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Slides</ion-title>
+        <ion-title>{{destination}} ({{ startDate }}-{{ endDate }})</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <div style="display: block">
-        <canvas baseChart width="1" height="1.4"
-                [data]="doughnutChartData"
-                [labels]="doughnutChartLabels"
-                [chartType]="doughnutChartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"
-                [legend]=true></canvas>
-    </div>
+    <ion-card>
+        <p style="height: 10px">
+        </p>
+        <p style="width: 80%; height: 60px; text-align: justify">
+            Estimated costs of your trip to {{ destination }} on
+            {{ startDate }}-{{ endDate }} for {{numOfPeople}}
+            people.
+        </p>
 
-    <ion-list>
+        <div style="display: block">
+            <canvas baseChart width="1" height="1.4"
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"
+                    [legend]=true></canvas>
+        </div>
+    </ion-card>
+    <ion-card>
         <ion-item>
-            <ion-icon name="calculator"></ion-icon>
-            Total expenses:
-            {{ total }}{{ currency }}
+            <ion-icon name="calculator" item-start large></ion-icon>
+            Total expenses: {{ total }} {{ currency }}
         </ion-item>
-
         <ion-item>
-            <ion-icon name="man"></ion-icon>
-            Expenses per person:
-            {{ total/numOfPeople }}{{ currency }}
+            <ion-icon name="man" item-start large></ion-icon>
+            Expenses per person: {{ total/numOfPeople }} {{ currency }}
         </ion-item>
-
-    </ion-list>
+    </ion-card>
 </ion-content>
 <!--<ion-slides pager="true" parallax="true">-->
 <!--<ion-slide>-->
