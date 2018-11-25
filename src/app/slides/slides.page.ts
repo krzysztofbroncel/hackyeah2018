@@ -6,7 +6,8 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./slides.page.scss'],
 })
 export class SlidesPage implements OnInit {
-
+    public low = [750, 3000, 100, 50, 300];
+    public high = [150, 5000, 200, 50, 1000];
 
     public doughnutChartType: string = 'doughnut';
     public doughnutChartLabels: string[];
@@ -21,7 +22,7 @@ export class SlidesPage implements OnInit {
 
     constructor() {
         this.doughnutChartLabels = ['Food & Restaurants', 'Transport', 'Activities & Misc', 'Fees', 'Souvenirs'];
-        this.doughnutChartData = [750, 3000, 100, 50, 300];
+        this.doughnutChartData = this.low;
         this.total = this.doughnutChartData.reduce((a, b) => a + b);
         this.numOfPeople = 2;
         this.currency = "EUR";
