@@ -27,6 +27,13 @@
                     (chartClick)="chartClicked($event)"
                     [legend]=true></canvas>
         </div>
+
+        <ion-item>
+            <ion-label>Low income</ion-label>
+            <ion-toggle [(ngModel)]="selectedIncome" (ngModelChange)="update($event)"></ion-toggle>
+            <ion-label>High income</ion-label>
+        </ion-item>
+
     </ion-card>
     <ion-card>
         <ion-item>

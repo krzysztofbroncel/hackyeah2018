@@ -22,15 +22,22 @@ export class SlidesPage implements OnInit {
 
     public currentColor = 'secondary';
 
+    public selectedIncome;
+
     constructor() {
         this.doughnutChartLabels = ['Food & Restaurants', 'Transport', 'Activities & Misc', 'Fees', 'Souvenirs'];
         this.doughnutChartData = this.low;
+
+        this.currency = 'EUR';
+        this.startDate = '2018-11-26';
+        this.endDate = '2018-12-03';
+        this.destination = 'Barcelona';
+        this.updateNumbers();
+    }
+
+    public updateNumbers() {
         this.total = this.doughnutChartData.reduce((a, b) => a + b);
         this.numOfPeople = 2;
-        this.currency = "EUR";
-        this.startDate = "2018-11-26"
-        this.endDate = "2018-12-03"
-        this.destination = "Barcelona"
     }
 
     ngOnInit() {
@@ -42,6 +49,15 @@ export class SlidesPage implements OnInit {
 
     public chartHovered(e: any): void {
         console.log(e);
+    }
+
+    public update(event) {
+        if (event) {
+            this.doughnutChartData = this.high;
+        } else {
+            this.doughnutChartData = this.low;
+        }
+        this.updateNumbers();
     }
 
     public toggleColor() {
