@@ -37,12 +37,12 @@
         </ion-item>
 
     </ion-card>
-    <ion-card>
+    <ion-card style="box-shadow: none; -webkit-box-shadow: none">
 
         <ion-searchbar animated autocomplete placeholder="Country" searchIcon="map"
                        (ionInput)="getItems($event)"></ion-searchbar>
         <ion-list>
-            <ion-item *ngFor="let country of countryList" (click)="buttonClick(country)">
+            <ion-item *ngFor="let country of filteredCountryList" (click)="buttonClick(country)">
                 <button float-right>
                     >
                 </button>

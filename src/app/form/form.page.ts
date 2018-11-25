@@ -8,11 +8,12 @@ import {UsersService} from '../users.service';
     styleUrls: ['form.page.scss'],
 })
 export class FormPage implements OnInit {
-    public countryList: Array<any>;
+    public countryList: any[] = ['Barcelona', 'Berlin', 'Budapest', 'Oslo', 'Paris', 'Rome'];
 
     public startDate: string;
     public endDate: string;
     public numOfPeople: number;
+    private filteredCountryList: any[];
 
     constructor(private navCtrl: NavController, private usersService: UsersService) {
         this.startDate = usersService.startDate;
@@ -21,26 +22,18 @@ export class FormPage implements OnInit {
     }
 
     ngOnInit() {
-        this.initializeItems();
-    }
-
-    initializeItems(): void {
-        this.countryList = ['Barcelona', 'Berlin', 'Budapest', 'Oslo', 'Paris', 'Rome'];
     }
 
     getItems(searchbar) {
-        // Reset items back to all of the items
-        this.initializeItems();
-
         // set q to the value of the searchbar
-        var q = searchbar.srcElement.value;
+        const q = searchbar.srcElement.value;
 
         // if the value is an empty string don't filter the items
         if (!q) {
+            this.filteredCountryList = [];
             return;
         }
-
-        this.countryList = this.countryList.filter((v) => {
+        this.filteredCountryList = this.countryList.filter((v) => {
             if (v) {
                 if (v.toLowerCase().indexOf(q.toLowerCase()) >= 0) {
                     return true;
@@ -60,6 +53,7 @@ export class FormPage implements OnInit {
         this.usersService.destination = country;
 
         console.log('Clicked: ' + country);
+        this.filteredCountryList = [];
         this.navCtrl.navigateForward('slides');
     }
 
