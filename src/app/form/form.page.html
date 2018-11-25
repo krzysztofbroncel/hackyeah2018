@@ -1,28 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Form
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Search
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding center text-center>
     <ion-title>Welcome!</ion-title>
+    <p>Please define your search</p>
 
-    <ion-list>  
-        <ion-item>
-          <ion-input placeholder="User name" [(ngModel)]="username"></ion-input>
+    <ion-searchbar animated autocomplete placeholder="Country" searchIcon="map"
+                   (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let country of countryList" (click)="buttonClick(country)">
+            {{ country }}
+            <button float-right>
+                >
+            </button>
         </ion-item>
-
-        <ion-item>
-          <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
-        </ion-item>
-
-        <button ion-button full (click)="login()">Log in</button>
     </ion-list>
-  
-    <button ion-button full color="light" (click)="goHome()">Go to Home screen</button>
+    <!--<ion-list>  -->
+
+
+    <!--<ion-item>-->
+    <!--<ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>-->
+    <!--</ion-item>-->
+
+    <!--<button ion-button full (click)="login()">Log in</button>-->
+    <!--</ion-list>-->
+
+    <!--<button ion-button full color="light" (click)="goHome()">Go to Home screen</button>-->
 </ion-content>

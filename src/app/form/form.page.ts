@@ -1,32 +1,55 @@
-import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { UsersService } from '../users.service';
+import {Component, OnInit} from '@angular/core';
+import {NavController} from '@ionic/angular';
+import {UsersService} from '../users.service';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: 'form.page.html',
-  styleUrls: ['form.page.scss'],
+    selector: 'app-form',
+    templateUrl: 'form.page.html',
+    styleUrls: ['form.page.scss'],
 })
-export class FormPage {
-  
-  username: string;
-  password: string;
+export class FormPage implements OnInit {
+    public countryList: Array<any>;
 
-  constructor(private navCtrl: NavController, private usersService: UsersService) {
+    constructor(private navCtrl: NavController, private usersService: UsersService) {
 
-  }
+    }
 
-  login() {
-    console.log(`Logging with user ${this.username} and password ${this.password}`);
-    this.usersService.putRequest(this.username, this.password).subscribe(data => {
-      if (data != null ) {
-        console.log('Logged in.');
-      }
-    });
-  }
+    ngOnInit() {
+        this.initializeItems();
+    }
 
-  goHome() {
-    this.navCtrl.navigateForward('home');
-  }
+    initializeItems(): void {
+        this.countryList = ['Abc', 'Cde'];
+    }
+
+    getItems(searchbar) {
+        // Reset items back to all of the items
+        this.initializeItems();
+
+        // set q to the value of the searchbar
+        var q = searchbar.srcElement.value;
+
+        // if the value is an empty string don't filter the items
+        if (!q) {
+            return;
+        }
+
+        this.countryList = this.countryList.filter((v) => {
+            if (v) {
+                if (v.toLowerCase().indexOf(q.toLowerCase()) >= 0) {
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        console.log(q, this.countryList.length);
+
+    }
+
+    buttonClick(country) {
+        console.log('Clicked: ' + country);
+        this.navCtrl.navigateForward('slides');
+    }
 
 }
