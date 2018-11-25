@@ -13,16 +13,43 @@
     <ion-title>Welcome!</ion-title>
     <p>Please define your search</p>
 
-    <ion-searchbar animated autocomplete placeholder="Country" searchIcon="map"
-                   (ionInput)="getItems($event)"></ion-searchbar>
-    <ion-list>
-        <ion-item *ngFor="let country of countryList" (click)="buttonClick(country)">
-            {{ country }}
-            <button float-right>
-                >
-            </button>
+    <ion-card>
+
+        <ion-item>
+            <ion-label>Date from</ion-label>
+            <ion-datetime min="2018-11-26" max="2022-11-26" displayFormat="YYYY-MM-DD"
+                          [(ngModel)]="startDate"></ion-datetime>
         </ion-item>
-    </ion-list>
+
+        <ion-item>
+            <ion-label>Date to</ion-label>
+            <ion-datetime min="2018-11-26" max="2022-11-26" displayFormat="YYYY-MM-DD"
+                          [(ngModel)]="endDate"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-icon small range-left name="man"></ion-icon>
+            <ion-range min="1" max="6" step="1" snaps="true" [(ngModel)]="numOfPeople">
+            </ion-range>
+            <ion-chip>
+                <ion-label color="blue">&nbsp;&nbsp;{{numOfPeople}}</ion-label>
+            </ion-chip>
+        </ion-item>
+
+    </ion-card>
+    <ion-card>
+
+        <ion-searchbar animated autocomplete placeholder="Country" searchIcon="map"
+                       (ionInput)="getItems($event)"></ion-searchbar>
+        <ion-list>
+            <ion-item *ngFor="let country of countryList" (click)="buttonClick(country)">
+                <button float-right>
+                    >
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ country }}
+            </ion-item>
+        </ion-list>
+    </ion-card>
     <!--<ion-list>  -->
 
 
