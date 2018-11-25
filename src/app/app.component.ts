@@ -12,7 +12,7 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Search',
-      url: '/list',
+      url: '/form',
       icon: 'map'
     },
     {
