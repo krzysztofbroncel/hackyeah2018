@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>{{destination}} ({{ startDate }}-{{ endDate }})</ion-title>
+        <ion-title>Expense forecast</ion-title>
 
     </ion-toolbar>
 </ion-header>
@@ -12,14 +12,13 @@
     <ion-card>
         <p style="height: 5px">
         </p>
-        <p style="width: 80%; height: 60px; text-align: justify">
+        <p style="width: 80%; text-align: justify; margin-left: 20px">
             Estimated costs of your trip to {{ destination }} on
             {{ startDate }}-{{ endDate }} for {{numOfPeople}}
             people.
         </p>
-
         <div style="display: block">
-            <canvas baseChart width="1" height="1.4"
+            <canvas baseChart width="1" height="1"
                     [data]="doughnutChartData"
                     [labels]="doughnutChartLabels"
                     [chartType]="doughnutChartType"
