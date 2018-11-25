@@ -15,9 +15,9 @@ export class FormPage implements OnInit {
     public numOfPeople: number;
 
     constructor(private navCtrl: NavController, private usersService: UsersService) {
-        this.startDate = '2018-11-26';
-        this.endDate = '2018-12-03';
-        this.numOfPeople = 1;
+        this.startDate = usersService.startDate;
+        this.endDate = usersService.endDate;
+        this.numOfPeople = usersService.numOfPeople;
     }
 
     ngOnInit() {
@@ -25,7 +25,7 @@ export class FormPage implements OnInit {
     }
 
     initializeItems(): void {
-        this.countryList = ["Barcelona", "Berlin", "Budapest", "Oslo", "Paris", "Rome"];
+        this.countryList = ['Barcelona', 'Berlin', 'Budapest', 'Oslo', 'Paris', 'Rome'];
     }
 
     getItems(searchbar) {
@@ -54,6 +54,11 @@ export class FormPage implements OnInit {
     }
 
     buttonClick(country) {
+        this.usersService.startDate = this.startDate;
+        this.usersService.endDate = this.endDate;
+        this.usersService.numOfPeople = this.numOfPeople;
+        this.usersService.destination = country;
+
         console.log('Clicked: ' + country);
         this.navCtrl.navigateForward('slides');
     }

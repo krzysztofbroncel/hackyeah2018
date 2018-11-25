@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {NavController} from '@ionic/angular';
+import {UsersService} from '../users.service';
 
 @Component({
     selector: 'app-slides',
@@ -24,14 +26,11 @@ export class SlidesPage implements OnInit {
 
     public selectedIncome;
 
-    constructor() {
+    constructor(private usersService: UsersService) {
         this.doughnutChartLabels = ['Food & Restaurants', 'Transport', 'Activities & Misc', 'Fees', 'Souvenirs'];
         this.doughnutChartData = this.low;
 
         this.currency = 'EUR';
-        this.startDate = '2018-11-26';
-        this.endDate = '2018-12-03';
-        this.destination = 'Barcelona';
         this.updateNumbers();
     }
 
@@ -41,6 +40,10 @@ export class SlidesPage implements OnInit {
     }
 
     ngOnInit() {
+        this.startDate = this.usersService.startDate;
+        this.endDate = this.usersService.endDate;
+        this.numOfPeople = this.usersService.numOfPeople;
+        this.destination = this.usersService.destination;
     }
 
     public chartClicked(e: any): void {
