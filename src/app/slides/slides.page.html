@@ -37,11 +37,11 @@
     <ion-card>
         <ion-item>
             <ion-icon name="calculator" item-start large></ion-icon>
-            Total expenses: {{ total }} {{ currency }}
+            Total expenses: {{ total * numOfPeople }} {{ currency }}
         </ion-item>
         <ion-item>
             <ion-icon name="man" item-start large></ion-icon>
-            Expenses per person: {{ total/numOfPeople }} {{ currency }}
+            Expenses per person: {{ total }} {{ currency }}
         </ion-item>
     </ion-card>
 </ion-content>
